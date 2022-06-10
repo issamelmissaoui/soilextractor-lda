@@ -13,7 +13,7 @@ import pdfplumber
 from tabula import read_pdf
 import pandas as pd
 from pandas import ExcelWriter
-import numpy as np
+#import numpy as np
 
 """# Fonctions Support"""
 
@@ -137,7 +137,7 @@ def extract_acido_basique_2(data_sab_1_transf, data_sab_3_transf):
   
   if len(elem_values) == 5 : 
     dict_sab['pH eau*'] = [elem_values[2]]
-    dict_sab['pH KCl*'] = [np.nan]
+    dict_sab['pH KCl*'] = ['']
     dict_sab['Calcaire Total* (%)'] = [elem_values[0]]
     dict_sab['Calcaire Actif* (%)'] = [elem_values[1]]
     dict_sab['CaO (mg/kg)'] = [elem_values[3]]
@@ -154,7 +154,7 @@ def extract_acido_basique_2(data_sab_1_transf, data_sab_3_transf):
   
   elif len(elem_values) == 4 :
     dict_sab['pH eau*'] = [elem_values[1]]
-    dict_sab['pH KCl*'] = [np.nan]
+    dict_sab['pH KCl*'] = ['']
     dict_sab['Calcaire Total* (%)'] = [elem_values[0]]
     dict_sab['Calcaire Actif* (%)'] = ['']
     dict_sab['CaO (mg/kg)'] = [elem_values[2]]

@@ -12,7 +12,7 @@ Original file is located at
 from tabula import read_pdf
 import pandas as pd
 from pandas import ExcelWriter
-import numpy as np
+#import numpy as np
 
 """# Fonctions Support"""
 
@@ -116,7 +116,7 @@ def extract_acido_basique(data_sab_1_transf, data_sab_2_transf, data_sab_3_trans
     dict_sab['Calcaire Actif* (%)'] = [calc_actif]
     #dict_sab['Adequat_Calc_Actif'] = [extract_value(11, '8', data_sab_2)]
     cao = extract_value(19, '7', data_sab_2)
-    if cao in ['H1', 'h1', '', ' ', 'NaN', np.nan] :
+    if cao in ['H1', 'h1', '', ' ', 'NaN'] :
       cao = extract_value(19, '8', data_sab_2)
 
     if type(cao) not in [str, float, int] :
@@ -246,11 +246,11 @@ def extract_etat_hum_data(data_eh_trans):
   data_ex_aqu = data_exAqu.loc[[1,3,7,8,11,12,13],['1','2','3', '4']].copy()
   dict_eh = {}
   mo= extract_value(1, '1', data_ex_aqu).split('H1')[-1]
-  if mo in ['', ' ', np.nan, 'NaN']:
+  if mo in ['', ' ', 'NaN']:
     mo = extract_value(1, '2', data_ex_aqu)
-  if mo in ['', ' ', np.nan, 'NaN']:
+  if mo in ['', ' ', 'NaN']:
     mo = extract_value(1, '3', data_ex_aqu)
-  if mo in ['', ' ', np.nan, 'NaN']:
+  if mo in ['', ' ', 'NaN']:
     mo = extract_value(1, '4', data_ex_aqu)
 
   dict_eh['Matière Organique (%)'] = [mo]
@@ -333,25 +333,25 @@ def extract_autre_elem_data(data_autre_trans):
   data_autre_elem = data_aut.loc[30:,['1','2', '3','4']].copy()
   dict_autre = {}
   ec_15 = str(extract_value(32, '1', data_autre_elem)).split('H1')[-1]
-  if ec_15 in ['nan', np.nan,'', ' ']:
+  if ec_15 in ['nan','', ' ']:
     ec_15 = extract_value(32, '2', data_autre_elem)
-  if ec_15 in ['nan', np.nan,'', ' ']:
+  if ec_15 in ['nan','', ' ']:
     ec_15 = extract_value(32, '3', data_autre_elem)
 
   dict_autre['EC 1/5 (ms/cm)'] = [ec_15]
   #dict_sab['Adequat_EC'] = [extract_value(35, '4', data_autre_elem)]
   
   sodium_ = str(extract_value(39, '1', data_autre_elem)).split('H1')[-1]
-  if sodium_ in ['nan', np.nan,'', ' ']:
+  if sodium_ in ['nan','', ' ']:
     sodium_ = extract_value(39, '2', data_autre_elem)
-  if sodium_ in ['nan', np.nan,'', ' ']:
+  if sodium_ in ['nan','', ' ']:
     sodium_ = extract_value(39, '3', data_autre_elem)
 
   dict_autre['Sodium Na2O (mg/kg)'] = [sodium_]
   #dict_sab['Adequat_Azote_tot'] = [extract_value(39, '4', data_autre_elem)]
   cec = extract_value(47, '2', data_autre_elem)
   #print('cec', cec)
-  if type(cec) not in ['str', 'int', 'float'] or cec in ['nan', np.nan,'', ' '] :
+  if type(cec) not in ['str', 'int', 'float'] or cec in ['nan','', ' '] :
     
     cec =  extract_value(47, '3', data_autre_elem)
 
