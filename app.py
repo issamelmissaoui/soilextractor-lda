@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from flask import Flask, request, render_template, current_app, send_from_directory
 from string import punctuation
 import re
