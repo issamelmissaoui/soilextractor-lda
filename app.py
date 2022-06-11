@@ -180,7 +180,7 @@ def my_form_post():
 def restitution_download(filename):
     downloads = GEN_DOWNLOAD_FOLDER
 
-    return send_from_directory(directory=downloads, filename=filename+'.xlsx')
+    return send_from_directory(directory=downloads, path=filename+'.xlsx')
 
     #return send_from_directory('database_reports', filename)
 
